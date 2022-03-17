@@ -38,20 +38,20 @@ class OrderItemsController < ApplicationController
       params.require(:order_item).permit(:quantity, :product_id, :cart_id)
     end
 
-  def add_items_to_cart(chosen_product)
-    # If cart already has this product then find the relevant line_item
-    # and iterate quantity otherwise create a new line_item for this product
-    if @current_cart.products.include?(chosen_product)
-      # Find the line_item with the chosen_product
-      @order_item = @current_cart.order_items.find_by(product_id: chosen_product)
-      # Iterate the order_item's quantity by one
-      @order_item.quantity += 1
-    else
-      @order_item = OrderItem.new
-      @order_item.cart = @current_cart
-      @order_item.product= chosen_product
-      # @order_item.order_id = @orden.id
-      @order_item.quantity = 1
+    def add_items_to_cart(chosen_product)
+      # If cart already has this product then find the relevant line_item
+      # and iterate quantity otherwise create a new line_item for this product
+      if @current_cart.products.include?(chosen_product)
+        # Find the line_item with the chosen_product
+        @order_item = @current_cart.order_items.find_by(product_id: chosen_product)
+        # Iterate the order_item's quantity by one
+        @order_item.quantity += 1
+      else
+        @order_item = OrderItem.new
+        @order_item.cart = @current_cart
+        @order_item.product= chosen_product
+        # @order_item.order_id = @orden.id
+        @order_item.quantity = 1
+      end
     end
-  end
 end
