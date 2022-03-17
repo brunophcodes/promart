@@ -3,7 +3,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![home](https://user-images.githubusercontent.com/94634890/157078149-50532db3-314a-4ed4-a5be-a37f9549e85b.png)
+![Promart](https://user-images.githubusercontent.com/87345401/158818987-0da8863b-eecb-41fc-9546-1b3849cda1a3.png)
+
 
 
 El ECommerce de Promart es una app que te permite comprar productos entre las categorías electrónicos, joyería, ropa de dama y caballero. 
