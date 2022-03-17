@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'carts/:id', to: "carts#show", as: "cart"
   get 'carts/show'
   devise_for :users
   root to: 'pages#home'

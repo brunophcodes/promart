@@ -3,7 +3,7 @@
     <div class="row">
     <% @products.each do |product| %>
       <div class="card m-2 rounded-card px-0 shadow" style="width: 18rem;">
-        <%= cl_image_tag product.photo.key, height: 300, width: 400, crop: :fill %>
+        <%= cl_image_tag product.photo.key, height: 300, width: 280, crop: :fill %>
         <div class="card-body">
           <h5 class="card-title">Producto: <%= product.name %></h5>
           <p class="card-text">Precio por unidad de: <%= number_to_currency(product.price) %></p>
@@ -11,7 +11,7 @@
           <p>
             <%= link_to "Edit", edit_product_path(product) %> |
             <%= link_to "Delete", product_path(product), method: :delete, data: {confirm: "Are you sure?"} %>
-            <%= button_to "Add #{product.name} to cart", order_items_path(product_id: product.id), :class =>'btn btn-primary mx-auto px-5 align-center ', :style => "width:100%" %>
+            <%= button_to "Agregar al carrito", order_items_path(product_id: product.id), :class =>'btn btn-primary mx-auto px-5 align-center ', :style => "width:100%" %>
           </p>
         </div>
       </div>
