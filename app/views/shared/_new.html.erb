@@ -15,6 +15,9 @@
         <%= f.text_field :description, required: true %>
       </p>
       <p>
+      <%= f.input :category, :collection => ["Electrónicos" , "Joyería", "Ropa para Dama", "Ropa para Caballero" ], input_html: {class: 'test'} %>
+      </p>
+      <p>
         <%= f.input :photo, as: :file %>
       </p>
       <p>
