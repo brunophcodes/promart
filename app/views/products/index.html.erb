@@ -1,0 +1,22 @@
+<div class="container-md">
+  <div class="d-flex mt-5" style="width:100%">
+    <div class="row">
+    <% @products.each do |product| %>
+      <div class="card m-2 rounded-card px-0 shadow" style="width: 18rem;">
+        <img src="https://media.istockphoto.com/photos/mans-legs-sitting-on-the-rocks-picture-id537333186?s=2048x2048" class="card-img-top image-border-top" style = "width:100%"  alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Model: <%= product.name %></h5>
+          <p class="card-text">Unit price of <%= number_to_currency(product.price) %></p>
+          <p>Description: <%= product.description %></p>
+          <p>
+            <%= link_to "Edit", edit_product_path(product) %> |
+            <%= link_to "Delete", product_path(product), method: :delete, data: {confirm: "Are you sure?"} %>
+            <%= button_to "Add #{product.model} to cart", order_items_path(product_id: product.id), :class =>'btn btn-primary mx-auto px-5 align-center ', :style => "width:100%" %>
+          </p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to "New product", new_product_path %>
+</div>
