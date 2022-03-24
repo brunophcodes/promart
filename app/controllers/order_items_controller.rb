@@ -28,6 +28,8 @@ class OrderItemsController < ApplicationController
     @order_item = OrderItem.find(params[:id])
     if @order_item.quantity > 1
       @order_item.quantity -= 1
+    else
+      @order_item.destroy
     end
     @order_item.save
     redirect_to cart_path
