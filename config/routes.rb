@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'carts/:id', to: "carts#show", as: "cart"
-  get 'carts/show'
+  #get 'carts/:id', to: "carts#show", as: "cart"
+  get 'carts/my_cart', to: "carts#show", as: "cart"
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
