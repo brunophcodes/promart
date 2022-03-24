@@ -1,4 +1,5 @@
 class OrderItemsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:create, :destroy, :add_quantity, :reduce_quantity, :add_items_to_cart]
 
   def create
     # Find associated product and current cart
