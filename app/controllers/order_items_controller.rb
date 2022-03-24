@@ -8,20 +8,20 @@ class OrderItemsController < ApplicationController
     # If cart already has this product then find the relevant order_item and iterate quantity otherwise create a new order_item for this product
     # Save and redirect to cart show path
     @order_item.save!
-    redirect_to cart_path(@current_cart)
+    redirect_to cart_path
   end
 
   def destroy
     @order_item = OrderItem.find(params[:id])
     @order_item.destroy
-    redirect_to cart_path(@current_cart)
+    redirect_to cart_path
   end
 
   def add_quantity
     @order_item = OrderItem.find(params[:id])
     @order_item.quantity += 1
     @order_item.save
-    redirect_to cart_path(@current_cart)
+    redirect_to cart_path
   end
 
   def reduce_quantity
@@ -30,7 +30,7 @@ class OrderItemsController < ApplicationController
       @order_item.quantity -= 1
     end
     @order_item.save
-    redirect_to cart_path(@current_cart)
+    redirect_to cart_path
   end
 
   private
