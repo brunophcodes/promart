@@ -8,6 +8,15 @@
           <h5 class="card-title">Producto: <%= product.name %></h5>
           <p class="card-text">Precio por unidad de: <%= number_to_currency(product.price) %></p>
           <p>Descripción: <%= product.description %></p>
+          <div class="input-group">
+            <div class="input-group-btn">
+              <button id="down" class="btn btn-default" onclick=" down('0')"><span class="glyphicon glyphicon-minus"></span></button>
+            </div>
+            <input type="text" id="myNumber" class="form-control input-number" value="1" />
+            <div class="input-group-btn">
+              <button id="up" class="btn btn-default" onclick="up('10')"><span class="glyphicon glyphicon-plus"></span></button>
+            </div>
+          </div>
           <p>
             <%= link_to "Edit", edit_product_path(product) %> |
             <%= link_to "Delete", product_path(product), method: :delete, data: {confirm: "Are you sure?"} %>
