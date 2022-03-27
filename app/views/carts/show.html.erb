@@ -1,19 +1,24 @@
 <div class="container mt-5">
 <h2>Mi Carrito</h2>
 <ul>
-  <% @cart.order_items.each do |order_item| %>
-    <li>Item: <%= order_item.product.name %> | Precio: <%= number_to_currency(order_item.product.price) %> | Cantidad: <%= order_item.quantity %> | Total a pagar: <%= number_to_currency(order_item.total_price) %>
-        <%= link_to "Agregar", order_item_add_path(id: order_item), method: :post %>
-        <%= link_to "Disminuir", order_item_reduce_path(id: order_item), method: :post %>
-    </li>
-      <li>
-        <%= link_to "Eliminar del carrito", order_item_path(order_item), method: :delete %>
+  <% if @cart.order_items.empty? %>
+    <%= image_tag "https://www.xenonfactory.es/wp-content/uploads/2019/01/carrito-compras-desarrollo-tienda-virtual.png" %>
+    <h3>EL CARRITO ESTÁ VACÍO</h3>
+  <% else %>
+    <% @cart.order_items.each do |order_item| %>
+      <li>Item: <%= order_item.product.name %> | Precio: <%= number_to_currency(order_item.product.price) %> | Cantidad: <%= order_item.quantity %> | Total a pagar: <%= number_to_currency(order_item.total_price) %>
+          <%= link_to "Agregar", order_item_add_path(id: order_item), method: :post %>
+          <%= link_to "Disminuir", order_item_reduce_path(id: order_item), method: :post %>
       </li>
-    </ul>
+        <li>
+          <%= link_to "Eliminar del carrito", order_item_path(order_item), method: :delete %>
+        </li>
+      </ul>
+    <% end %>
+  </ul>
+  <h3>Sub total: <%= number_to_currency(@cart.sub_total) %></h3>
+  <p><%= link_to "Proceder a pagar", new_order_path %><br>
+  <%= link_to "Vaciar el carrito", cart_path(@current_cart),method: :delete, data: {confirm: "¿Está segur@ de eliminar su carrito?"} %>
+  </p>
   <% end %>
-</ul>
-<h3>Sub total: <%= number_to_currency(@cart.sub_total) %></h3>
-<p><%= link_to "Proceder a pagar", new_order_path %><br>
-<%= link_to "Vaciar el carrito", cart_path(@current_cart),method: :delete, data: {confirm: "¿Está segur@ de eliminar su carrito?"} %>
-</p>
 </div>
