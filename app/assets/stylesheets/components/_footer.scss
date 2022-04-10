@@ -1,0 +1,14 @@
+a {
+  text-decoration: none;
+}
+
+.list-unstyled a , p {
+  color: gray;
+  font-size: small;
+}
+
+.list-unstyled a:hover{
+  color: white;
+  text-decoration: underline;
+  transition-delay: 1ms;
+}
