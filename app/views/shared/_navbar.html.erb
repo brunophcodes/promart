@@ -12,6 +12,16 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li>
+          <% if @current_cart.order_items.count > 0 %>
+              <%= link_to  @current_cart, class: "nav-link"   do %>
+                <div class="mr-5">
+                  <i class="fa fa-shopping-cart" style="position:absolute; top:18px "></i>
+                  <div class="rounded-circle bg-danger text-light text-center" style="width:16px; height:16px; font-size:11px; position:relative; top: -9px; left: 11px; "><%= @current_cart.order_items.sum(:quantity) %></div>
+                </div>
+              <% end %>
+          <% else %>
+              <a href="#"  class= "nav-link"><i class="fa fa-shopping-cart"></i>  </a>
+          <% end %>
             <%= link_to "Mi carrito", cart_path, class: "nav-link" %>
           </li>
           <li>
